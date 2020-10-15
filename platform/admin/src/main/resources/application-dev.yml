@@ -1,0 +1,86 @@
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/platform?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: root
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      # 检测连接是否失效的sql
+      validation-query: SELECT 'x'
+      # 检测连接是否失效的超时时间，单位：秒
+      validation-query-timeout: 2
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: 123456
+      #        allow: 192.168.10.150,127.0.0.1
+      filter:
+        config:
+          enabled: true
+        # 监控统计
+        stat:
+          enabled: true
+          db-type: mysql
+          # 打印慢sql
+          log-slow-sql: true
+          # 超过200毫秒即为慢sql
+          slow-sql-millis: 1000
+        # sql防火墙
+        wall:
+          enabled: true
+          db-type: mysql
+          # 对认定的攻击sql进行日志输出
+          log-violation: true
+          # 对认定的攻击sql抛出SQLExcepton异常
+          throw-exception: true
+          config:
+            # 是否允许下述操作
+            alter-table-allow: false
+            truncate-allow: false
+            drop-table-allow: false
+            update-where-none-check: true
+            # metadata会暴露数据的表结构
+            metadata-allow: true
+  redis:
+    database: 0
+    host: 114.55.179.21
+    port: 6379
+    password: adminqq1234567    # 密码（默认为空）
+    timeout: 6000               # 连接超时时长（毫秒）
+    jedis:
+      pool:
+        max-active: 1000        # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: 10000         # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 10            # 连接池中的最大空闲连接
+        min-idle: 5             # 连接池中的最小空闲连接
+        time-between-eviction-runs: 300000      # 逐出扫描的时间间隔
+    lettuce:
+      shutdown-timeout: 100ms
+
+# RocketMQ
+aliyun:
+  rocketmq:
+    # 是否开启 rocketmq
+    open: true
+    # mq集群链接配置
+    accessKey: XXXXXXXXXXXXXX
+    secretKey: XXXXXXXXXXXXXX
+    nameSrvAddr: XXXXXXXXXXXXXXXXXXXX
+    # 消息配置信息
+    topic: XXXXXXXXXXX
+    groupId: XXXXXXXXXXX
+    consumeThreadNums: 100

@@ -1,0 +1,75 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8080
+  connection-timeout: 5000ms
+  servlet:
+    context-path: /platform
+
+spring:
+  # 环境 dev|prod
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  application:
+    name: /platform
+  banner:
+    location: templates/banner.txt
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+
+# mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  #  包扫描路径
+  type-aliases-package: com.liren.admin.entity
+  configuration:
+    use-generated-keys: true
+    mapUnderscoreToCamelCase: true
+    map-underscore-to-camel-case: true
+    #   是否开其 mybatis 日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
+
+# 项目所有的自定义配置类
+liren:
+  # 七牛
+  qiniu:
+    accessKey: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    secretKey: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    baseUrl: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    bucket: XXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  es:
+    host: 127.0.0.1
+    port: 9200
+    scheme: http
+    connTimeout: 3000
+    socketTimeout: 5000
+    connectionRequestTimeout: 500
+  token:
+    # 加密秘钥
+    secret: my_secret[liren]
+    # token有效时长，8小时，单位秒
+    expire: 28800
+    header: token
+  builder:
+    name: LIREN
+    project: platform
+
+
+
+

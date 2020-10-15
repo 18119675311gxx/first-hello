@@ -1,0 +1,4 @@
+{
+  "book": "{\n    \"properties\": {\n        \"id\": {\n            \"type\": \"integer\"\n        },\n        \"bookId\": {\n            \"type\": \"integer\"\n        },\n        \"name\": {\n            \"type\": \"text\",\n            \"analyzer\": \"ik_max_word\",\n            \"search_analyzer\": \"ik_smart\"\n        }\n    }\n}",
+  "esUser": "{\n  \"properties\": {\n    \"userId\": {\n      \"type\": \"integer\"\n    },\n    \"city\": {\n      \"type\": \"keyword\"\n    },\n    \"sex\": {\n      \"type\": \"keyword\"\n    },\n    \"name\": {\n      \"type\": \"keyword\"\n    },\n    \"id\": {\n      \"type\": \"keyword\"\n    },\n    \"age\": {\n      \"type\": \"integer\"\n    },\n    \"address\": {\n      \"type\": \"text\",\n      \"analyzer\": \"ik_max_word\",\n      \"search_analyzer\": \"ik_smart\"\n    }\n  }\n}"
+}
