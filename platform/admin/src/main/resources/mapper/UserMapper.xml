@@ -5,11 +5,11 @@
 
     <resultMap id="BaseResultMap" type="com.beizeng.admin.entity.User">
         <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="username" jdbcType="VARCHAR" property="userName"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
     </resultMap>
     <sql id="Base_Column_List">
-        id, user_name, `password`
+        id, username, `password`
     </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select

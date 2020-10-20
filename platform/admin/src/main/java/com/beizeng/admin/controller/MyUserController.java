@@ -1,5 +1,6 @@
 package com.beizeng.admin.controller;
 
+import com.beizeng.admin.common.sys.annotion.IgnToken;
 import com.beizeng.admin.entity.User;
 import com.github.pagehelper.PageHelper;
 import com.beizeng.admin.common.utils.rocket.RocketMessageProducer;
@@ -26,10 +27,12 @@ public class MyUserController {
 
     @Autowired
     private MyUserService myUserService;
-
+    @IgnToken
     @RequestMapping(value = {"/queryuserbyid/{userId}"}, method = RequestMethod.GET)
     public User queryuserbyid(@PathVariable String userId) throws RRException {
+        System.out.println("userId: "+userId);
         User user = myUserService.queryuserbyid(userId);
+        System.out.println("user: "+user);
         return user;
     }
 
